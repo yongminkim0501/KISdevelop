@@ -28,14 +28,22 @@ class Stock:
         }
         self.SearchedData.append(dic_data)
 
-    def SearchStockPer(self, thresholdPer):
+    def filter_stock_data(self, threshold, compare_func):
         result = []
-        for item in self.SearchedData:
-            if item.per >= thresholdPer:
+        for item in self.SearchedData: #Searched data를 불러와서
+            if compare_func(item) >= threshold:# threshold 값 보다 높으면 item을 result에 포함
                 result.append(item)
         return result
-'''
-같은 형식의 per, pbr, eps, bps 만들 예정
-따라서 super 클래스로 상속받아서 만들 예정이며 그에 따라 해당 연결은
-factory로 구현 후, 그곳에서 책임 부여
-'''
+
+    def compare_per(item): # Searched data 값을 받아서 원하는 것에 따라 per, pbr, 등 불러옴
+        return item.per
+
+    def compare_pbr(item):
+        return item.pbr
+
+    def compare_eps(item):
+        return item.eps
+
+    def compare_bps(item):
+        return item.bps
+
