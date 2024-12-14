@@ -47,3 +47,4 @@ class Stock:
     def compare_bps(item):
         return item.bps
 
+# commit 변경을 알아보기 위한 주석
