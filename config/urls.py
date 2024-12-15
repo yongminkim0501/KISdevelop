@@ -8,5 +8,5 @@ def redirect_to_login(request):
 urlpatterns = [
     path('', redirect_to_login),
     path('admin/', admin.site.urls),
-    path('stock/', include('Stock.urls')),
+    path('AccountManage/', include('AccountManage.urls')),
 ]
