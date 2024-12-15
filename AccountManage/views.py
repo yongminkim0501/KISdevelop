@@ -28,23 +28,17 @@ def login_user(request):
 @login_required
 def home(request):
     return render(request, 'AccountManage/home.html', {'user': request.user})
+#render 함수는 템플릿을 불러와서 html 페이지생성해 보여줌
+#현재 url 유지한 채 템플릿만 렌더링
+#템플릿에 데이터 context 를 전달할 수 있음.
 
 def logout_user(request):
     logout(request)
     return redirect('login')
+# 다른 url로 브라우저를 이동시킴
+# 새로운 url로 실제 페이지 이동이 발생
+# 브라우저의 주소창이 새로운 url로 변경
 
-#
-# from django.views.generic import ListView
-# from django.contrib.auth.mixins import LoginRequiredMixin
-# from django.contrib.auth.models import User
-# from django.shortcuts import render
-# from django.core.paginator import Paginator
-#
-# class UserListView(LoginRequiredMixin, ListView):
-#     model = User
-#     template_name = 'AccountManage/user_list.html'
-#     context_object_name = 'users'
-#     paginate_by = 10
-#     ordering = ['-date_joined']
-#
-:
+@login_required
+def Move_Board(request):
+    return redirect('Board:board')

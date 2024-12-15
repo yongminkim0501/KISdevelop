@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>게시판</title>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .home-button {
+            background-color: #008CBA;
+        }
+        .home-button:hover {
+            background-color: #007399;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>게시판</h2>
+        <p>현재 사용자: {{ user.username }}</p>
+
+        <!-- 여기에 게시판 내용이 들어갈 예정 -->
+        <div class="board-content">
+            <p>게시판 내용이 이곳에 표시됩니다.</p>
+        </div>
+
+        <!-- 홈으로 돌아가는 버튼 -->
+        <a href="{% url 'home' %}" class="button home-button">홈으로 돌아가기</a>
+    </div>
+</body>
+</html>

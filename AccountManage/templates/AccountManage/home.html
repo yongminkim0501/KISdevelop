@@ -2,10 +2,34 @@
 <html>
 <head>
     <title>홈</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .logout-button {
+            background-color: #f44336;
+        }
+        .logout-button:hover {
+            background-color: #da190b;
+        }
+    </style>
 </head>
 <body>
     <h2>환영합니다, {{ user.username }}님!</h2>
     <p>이곳은 메인 페이지입니다.</p>
-    <a href="{% url 'logout' %}">로그아웃</a>
+
+    <!-- 게시판으로 이동하는 버튼 추가 -->
+    <a href="{% url 'Board:board' %}" class="button">게시판으로 이동</a>
+    <br>
+    <a href="{% url 'logout' %}" class="button logout-button">로그아웃</a>
 </body>
 </html>

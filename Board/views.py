@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def board_user(request):
+    return render(request, 'Board/board.html')
