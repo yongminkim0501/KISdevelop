@@ -55,3 +55,5 @@ class Kosdaq_Stock(Stock_Structure):
         on_delete=models.CASCADE,
         related_name='stock_data'
     )
+
+    # 깃헙 확인용을 위한 주석
