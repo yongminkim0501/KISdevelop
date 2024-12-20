@@ -21,10 +21,12 @@ def login_token(request):
         try:
             private_kis = PrivateKis()
             private_kis.connectKis()
+            request.session['kis_connected'] = True
             return JsonResponse({"success":True})
         except Exception as e:
             print('token 로그인에 실패했습니다.', e)
-
+            return JsonResponse({"success":False, "error":str(e)})
+        
 def connect_stock(request):
     if request.method == 'POST':
         try:

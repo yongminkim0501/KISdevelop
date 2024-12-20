@@ -44,5 +44,5 @@ def Move_Board(request):
     return redirect('Board:board')
 
 @login_required
-def Move_token(request): # stock의 앱으로 이동
-    return redirect('Stock:stock')
+def Move_token(request):
+    return redirect('Stock:token_login') 

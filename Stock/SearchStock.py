@@ -1,4 +1,4 @@
-import ConnectKIS
+from . import ConnectKIS
 from pykis import PyKis, KisAuth, KisBalance, KisQuote
 
 

@@ -28,6 +28,8 @@
     <p>이곳은 메인 페이지입니다.</p>
 
     <!-- 게시판으로 이동하는 버튼 추가 -->
+    <a href="{% url 'Stock:token_login' %}" class="button">주식 토큰 연결 페이지 이동 </a>
+    <br>
     <a href="{% url 'Board:board' %}" class="button">게시판으로 이동</a>
     <br>
     <a href="{% url 'logout' %}" class="button logout-button">로그아웃</a>

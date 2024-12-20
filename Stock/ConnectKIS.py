@@ -1,5 +1,5 @@
 from pykis import PyKis
-import ManageToken
+from . import ManageToken
 
 
 class PrivateKis:
@@ -11,8 +11,7 @@ class PrivateKis:
             id=ManageToken.key_info.id,
             account=ManageToken.key_info.account,
             appkey=ManageToken.key_info.appkey,
-            secretkey=ManageToken.key_info.appscret
+            secretkey=ManageToken.key_info.appsecret
         )
-
     def getKis(self):
         return self.kis

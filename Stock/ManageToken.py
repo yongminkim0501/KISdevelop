@@ -1,8 +1,8 @@
 from django.conf import settings
 
-key_info = {
-    "appkey": settings.appkey,
-    "appsecret": settings.appsecret,
-    "account": settings.account,
-    "id": settings.id,
-}
+class key_info:
+    id = settings.ID
+    appkey = settings.APP_KEY
+    appsecret = settings.APP_SECRET
+    account = settings.ACCOUNT
+    virtual = settings.VIRTUAL

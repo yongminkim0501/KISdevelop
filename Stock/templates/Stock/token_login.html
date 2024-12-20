@@ -17,7 +17,7 @@
                         <h3 class="text-center">KIS API 토큰 연결</h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'login_token' %}" id="tokenForm">
+                        <form method="POST" action="{% url 'Stock:login_token' %}" id="tokenForm">
                             {% csrf_token %}
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-primary btn-lg">
@@ -42,7 +42,7 @@
         document.getElementById('tokenForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            fetch("{% url 'login_token' %}", {
+            fetch("{% url 'Stock:login_token' %}", {
                 method: 'POST',
                 headers: {
                     'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,

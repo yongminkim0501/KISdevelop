@@ -25,13 +25,14 @@ class Stock_Structure(models.Model):
     pbr = models.FloatField(null=False, blank=False)
     eps = models.FloatField(null=False, blank=False)
     roe = models.FloatField(null=False, blank=False)
+    '''
     disclosure = models.ForeignKey(
         'Disclosure',
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
-
+    '''
     class Meta:
         abstract = True
 
