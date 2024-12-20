@@ -3,12 +3,15 @@ from pykis import PyKis, KisAuth, KisBalance, KisQuote
 
 
 class Stock:
-    def __init__(self):
-        Cpk_tmp = ConnectKIS.PrivateKis()
-        Cpk_tmp.connectkis()
-        self.api_kis = Cpk_tmp.getkis()
+    def __init__(self, parameter = None):
+        self.Cpk_tmp = None
+        self.api_kis = None
         self.StockNameData = None
         self.SearchedData = []
+
+    def connectStockToken(self, kistoken):
+        self.Cpk_tmp = kistoken
+        self.api_kis = self.Cpk_tmp.getKis()
 
     def ConnectStockName(self, name):
         stock = self.api_kis.stock(name)
