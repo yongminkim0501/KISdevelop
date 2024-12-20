@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-
-
+from django.http import JsonResponse
+from Stock.ConnectKIS import *
+from Stock.SearchStock import Stock
 # 처음 만들어야 하는 view - token 로그인 여부 (로그인 시도 시 -> 로그인)
 # nasdaq 주식 불러오기 버튼 - sql db에 저장하기, 100개
 # 원하는 주식 (검색 - 코드, 접근 db)
@@ -17,3 +18,20 @@ from django.contrib.auth.decorators import login_required
 # 여기까지
 def login_token(request):
     if request.method == 'POST':
+        try:
+            private_kis = PrivateKis()
+            private_kis.connectKis()
+            return JsonResponse({"success":True})
+        except Exception as e:
+            print('token 로그인에 실패했습니다.', e)
+
+def connect_stock(request):
+    if request.method == 'POST':
+        try:
+            stock = Stock()
+            stock.connectStockToken(login_token.private_kis)
+        except Exception as e:
+            print('stock과 token 연결에 실패했습니다.')
+
+def connect_token_page(request):
+    return render(request, 'Stock/token_login.html')

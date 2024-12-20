@@ -42,3 +42,7 @@ def logout_user(request):
 @login_required
 def Move_Board(request):
     return redirect('Board:board')
+
+@login_required
+def Move_token(request): # stock의 앱으로 이동
+    return redirect('Stock:stock')
