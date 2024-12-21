@@ -37,3 +37,14 @@ def connect_stock(request):
 
 def connect_token_page(request):
     return render(request, 'Stock/token_login.html')
+
+def show_stock(request):
+    if request.method == 'POST':
+        try:
+            if not request.session.get('stock_connected'):
+                connect_stock(request='POST')
+                request.session['stock_connected'] = True
+
+            stock_data = stock.get_sto
+        except Exception as e:
+            print("Stock 데이터를 불러오는 것을 실패하였습니다.")

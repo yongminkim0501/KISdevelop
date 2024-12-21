@@ -1,6 +1,6 @@
 from . import ConnectKIS
 from pykis import PyKis, KisAuth, KisBalance, KisQuote
-
+from . import models
 
 class Stock:
     def __init__(self, parameter = None):
@@ -30,6 +30,25 @@ class Stock:
             "BPS": float(self.StockNameData.indicator.bps)
         }
         self.SearchedData.append(dic_data)
+
+    def connectSql(self):
+        for stock_data in self.SearchedData:
+            try:
+                nasdaq_stock, _ = models.Nasdaq.objects.get_or_create(
+                    code = stock_data["NAME"] # 추후 코드로 변경 예정
+                )
+                models.Nasdaq_Stock.objects.update_or_create(
+                    stock = nasdaq_stock,
+                    defaults={
+                        'per': stock_data["PER"],
+                        'pbr': stock_data["PBR"],
+                        'eps': stock_data["EPS"],
+                        'bps': stock_data["BPS"]
+                    }
+                )
+            except Exception as e:
+                print(f"데이터 저장/업데이트 중 오류 발생: {e}")
+                continue
 
     def filter_stock_data(self, threshold, compare_func):
         result = []
