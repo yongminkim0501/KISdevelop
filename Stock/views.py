@@ -45,6 +45,16 @@ def show_stock(request):
                 connect_stock(request='POST')
                 request.session['stock_connected'] = True
 
-            stock_data = stock.get_sto
+            if request.session['stock_connected'] == True:
+                connect_stock.stock.connectSQL() # 전체를 전부 db로 옮기는 코드
+            else:
+                print("연결이 되지 않아, stock 데이터 전체를 db에 연결하는 것을 실패하였습니다.")
+        
         except Exception as e:
             print("Stock 데이터를 불러오는 것을 실패하였습니다.")
+
+
+# 데이터를 db로 옮기는 것 자체는 구현이 되었으나 조건에 따라 db로 연결하는 것이 아닌, 전체를 그저
+# 복사하듯이 옮기는 중이라, 이에 대해서 입력 받는 조건에 따라 움직이는 것이 필요하여
+# 이 부분에 대한 추가 구현 필요,
+# 또한 db로 옮기는 것과, 조회하는 것, 입력 받아서 옮기는 것에 대한 의존성 분리 및 구현이 필요함
