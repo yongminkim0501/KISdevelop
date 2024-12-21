@@ -24,7 +24,7 @@ class Stock_Structure(models.Model):
     per = models.FloatField(null=False, blank=False)
     pbr = models.FloatField(null=False, blank=False)
     eps = models.FloatField(null=False, blank=False)
-    roe = models.FloatField(null=False, blank=False)
+    bps = models.FloatField(null=False, blank=False)
     '''
     disclosure = models.ForeignKey(
         'Disclosure',
